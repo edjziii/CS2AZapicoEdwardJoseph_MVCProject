@@ -41,5 +41,33 @@ namespace CS2AZapicoEdwardJoseph_MVCProject.Controllers
                 return Json(new {success = false, message = ex.Message});
             }
         }
+        [HttpPost]
+        public IActionResult UpdateStudent(tblStudent student)
+        {
+            try
+            {
+                bool result = _studentService.Update(student);
+                return Json(new { success = result, message = result ? "Student updated successfully!" : "Failed to update student :(" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteStudent(int ID)
+        {
+            try
+            {
+                bool result = _studentService.Delete(ID);
+                return Json(new { success = result, message = result ? "Student deleted successfully!" : "Failed to delete student :(" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
     }
 }
