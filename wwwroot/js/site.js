@@ -12,6 +12,18 @@
         alert('An error occured while adding the student.');
     }
 }
+
+/*const getStudentById = async (id) => {
+    try {
+        return await AjaxGET(`Student/GetStudentById/${id}`);
+    }
+    catch (error) {
+        console.error('Error getting: ', error);
+        alert('An error occured while retrieving student data.');
+        return null;
+    }
+};*/
+
 const UpdateStudent = async (student) => {
     try {
         const result = await AjaxPOST('/Student/UpdateStudent', student);
@@ -55,6 +67,7 @@ $(document).ready(function () {
         };
         AddStudent(student);
     });
+
     $('#editStudentForm').on('submit', function (e) {
         e.preventDefault();
         const student = {
